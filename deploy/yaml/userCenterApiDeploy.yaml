@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rentm-usercenter-api-deployment
+spec:
+  replicas: 1   # 副本数量，可以根据需求进行调整
+  selector:
+    matchLabels:
+      app: usercenter   # 标签选择器，用于选择要部署的 Pod 
+  template:
+    metadata:
+      labels:
+        app: usercenter   # Pod 的标签
+    spec:
+      #nodeSelector:
+        #kubernetes.io/hostname: worker-01
+      containers:
+        - name: usercenter-api   # 容器名称
+          imagePullPolicy: IfNotPresent   # 指定镜像拉取策略，默认为 IfNotPresent，这里设置为始终拉取最新镜像（Always）
+          image: rentM.hub/usercenter_api:v0.3    # 容器镜像
+          #env:
+            #- name: INSECURE_REGISTRY
+              #value: "true"
+          ports:
+            - containerPort: 8888   # 容器监听的端口号

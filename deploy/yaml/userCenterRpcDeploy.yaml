@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rentm-usercenter-rpc-deployment
+spec:
+  replicas: 1   # 副本数量，可以根据需求进行调整
+  selector:
+    matchLabels:
+      app: usercenter   # 标签选择器，用于选择要部署的 Pod 
+  template:
+    metadata:
+      labels:
+        app: usercenter   # Pod 的标签
+    spec:
+      containers:
+        - name: usercenter-rpc   # 容器名称
+          imagePullPolicy: IfNotPresent   # 指定镜像拉取策略，默认为 IfNotPresent，这里设置为始终拉取最新镜像（Always）
+          image: rentM.hub/usercenter_rpc:v0.2    # 容器镜像
+          ports:
+            - containerPort: 2004   # 容器监听的端口号

@@ -1,0 +1,32 @@
+Name: usercenter-mq
+Host: 0.0.0.0
+Port: 3001
+
+Log:
+  ServerName: usercenter-mq
+  Mode: file
+  Encoding: json
+
+#kq
+KafkaFirstTestConf:
+  Name: KafkaFirstTestConf
+  Brokers:
+    - 192.168.1.21:9092
+  Group: kafka-first-group
+  Topic: kafka-first-topic
+  Offset: first
+  Consumers: 1
+  Processors: 1
+
+UsercenterRpcConf:
+  Endpoints:
+    - 10.68.79.95:2004 # several vm linux composed k8s
+    #- 10.104.178.62:2004 #docker desktop's k8s
+    #- 127.0.0.1:2004 #vscode's local test
+  NonBlock: true
+
+Redis:
+  Host: 192.168.1.21:6379
+  Type: node
+  Pass: alp821821
+  Key: userCenter-mq

@@ -1,0 +1,22 @@
+Name: usercenter-rpc
+ListenOn: 0.0.0.0:2004
+
+JwtAuth:
+  AccessSecret: ae0536f9-6450-4606-8e13-5a19ed505da0
+  AccessExpire: 86400
+
+Log:
+  ServerName: usercenter-rpc
+  Mode: file
+  Encoding: json
+
+Redis:
+  Host: 192.168.1.21:6379
+  Type: node
+  Pass: alp821821
+  Key: userCenter-rpc
+DB:
+  DataSource: root:alp821821@tcp(192.168.1.21:3306)/rentm?charset=utf8mb4&parseTime=true&loc=Asia%2FShanghai
+Cache:
+  - Host: 192.168.1.21:6379
+    Pass: alp821821

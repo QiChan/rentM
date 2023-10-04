@@ -1,0 +1,30 @@
+Name: usercenter-api
+Host: 0.0.0.0
+Port: 8888
+
+Log:
+  ServerName: usercenter-api
+  Mode: file
+  Encoding: json
+
+JwtAuth:
+  AccessSecret: ae0536f9-6450-4606-8e13-5a19ed505da0
+  AccessExpire: 86400
+ 
+UsercenterRpcConf:
+  Endpoints:
+    - 10.68.79.95:2004 # several vm linux composed k8s
+    #- 10.104.178.62:2004 #docker desktop's k8s
+    #- 127.0.0.1:2004 #vscode's local test
+  NonBlock: true
+
+KqPusherConf:
+  Brokers:
+    - 192.168.1.21:9092
+  Topic: kafka-first-topic
+
+Redis:
+  Host: 192.168.1.21:6379
+  Type: node
+  Pass: alp821821
+  Key: userCenter-api
